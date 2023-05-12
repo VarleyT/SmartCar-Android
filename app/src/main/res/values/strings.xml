@@ -1,0 +1,11 @@
+<resources>
+    <string name="app_name">SmartCar</string>
+    <string name="connect">连接小车</string>
+    <string name="disconnect">断开连接</string>
+    <string name="connecting">连接中…</string>
+    <string name="car_connected">已连接</string>
+    <string name="car_disconnected">未连接</string>
+    <string name="wifi_settings">WiFi设置</string>
+    <string name="wifi_connected">小车WiFi热点已连接</string>
+    <string name="wifi_disconnected">小车WiFi热点未连接！</string>
+</resources>
