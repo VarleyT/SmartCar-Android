@@ -1,16 +1,17 @@
 package plus.a66.smartcar
 
 import android.annotation.SuppressLint
+import android.app.AlertDialog
 import android.content.Intent
 import android.os.Bundle
 import android.provider.Settings
 import android.view.MotionEvent
 import android.view.View
 import android.widget.Button
-import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.ViewModelProvider
+import plus.a66.smartcar.constant.MotorSpeed
 import plus.a66.smartcar.constant.MotorStatus
 import plus.a66.smartcar.databinding.ActivityMainBinding
 import plus.a66.smartcar.model.ControlStatusViewModel
@@ -86,6 +87,18 @@ class MainActivity : AppCompatActivity(), View.OnTouchListener {
                     controlStatusVM.stopServer()
                 }
             }
+        }
+        binding.updateSpeed.setOnClickListener {
+            AlertDialog.Builder(this)
+                .setTitle("选择速度")
+                .setItems(arrayOf("低速", "中速", "高速")) { _, i ->
+                    when (i) {
+                        0 -> controlStatusVM.setSpeed(MotorSpeed.LOW)
+                        1 -> controlStatusVM.setSpeed(MotorSpeed.MEDIUM)
+                        2 -> controlStatusVM.setSpeed(MotorSpeed.HIGH)
+                    }
+                }
+                .show()
         }
         binding.wifi.setOnClickListener {
             startActivity(Intent(Settings.ACTION_WIFI_SETTINGS))

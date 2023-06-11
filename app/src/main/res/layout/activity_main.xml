@@ -3,6 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <data>
+
         <variable
             name="wifiStatusVM"
             type="plus.a66.smartcar.model.WiFiStatusViewModel" />
@@ -131,6 +132,14 @@
                     android:layout_margin="15dp"
                     android:background="@drawable/btn_settings_selector"
                     android:text="@string/connect" />
+
+                <Button
+                    android:id="@+id/updateSpeed"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="15dp"
+                    android:background="@drawable/btn_settings_selector"
+                    android:text="@string/speed_settings" />
             </LinearLayout>
 
             <TextView

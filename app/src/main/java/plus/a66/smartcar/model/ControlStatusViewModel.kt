@@ -13,6 +13,7 @@ import androidx.lifecycle.ViewModelProvider
 import plus.a66.smartcar.MESSAGE_NEW_CLIENT
 import plus.a66.smartcar.R
 import plus.a66.smartcar.TcpServer
+import plus.a66.smartcar.constant.MotorSpeed
 import plus.a66.smartcar.constant.MotorStatus
 
 const val PORT = 8000
@@ -45,6 +46,16 @@ class ControlStatusViewModel(private val context: Context) : ViewModel() {
         if (tcpServer?.isAnyClientConnected()!!) {
             handler.post {
                 tcpServer!!.sendMessageToClients(motorStatus.cmd)
+            }
+        } else {
+            Toast.makeText(context, "无客户端连接！", Toast.LENGTH_SHORT).show()
+        }
+    }
+
+    fun setSpeed(motorSpeed: MotorSpeed) {
+        if (tcpServer != null && tcpServer?.isAnyClientConnected()!!) {
+            handler.post {
+                tcpServer!!.sendMessageToClients("pwm=${motorSpeed.speed}")
             }
         } else {
             Toast.makeText(context, "无客户端连接！", Toast.LENGTH_SHORT).show()
